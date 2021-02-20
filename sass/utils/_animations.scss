@@ -1,5 +1,6 @@
 .fa-heart::before {
   content: "\f004";
+  color: #000;
   transition: color 0.5s ease-out;
 }
 .fa-heart:hover::before {
