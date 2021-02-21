@@ -12,15 +12,17 @@
     background-color: $color-grey-dark;
     z-index: 1;
 
-    .location__p {
+    .location__p, 
+    .location__icon {
       font-size: 1.7rem;
+    }
+    .location__p {
       font-weight: 500;
       margin-left: 18px;
       color: inherit;
     }
     .location__icon {
       color: inherit;
-      font-size: 1.7rem;
     }
   }
   .banner__title {

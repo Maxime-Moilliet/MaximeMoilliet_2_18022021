@@ -1,0 +1,98 @@
+.menuCard {
+  width: 100%;
+  max-width: 350px;
+  background-color: $color-white;
+  box-shadow: $shadow;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;
+  animation-name: appear;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+
+  .menuCard__container {
+    overflow: hidden;
+    width: 100%;
+    padding: 15px 10px;
+  }
+
+  .menuCard__title,
+  .menuCard__description {
+    margin-right: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .menuCard__title {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+  .menuCard__description {
+    font-size: 1.4rem;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+  .menuCard__price {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-top: -15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .menuCard__animated {
+    width: 0px;
+    transition: .5s width;
+    background-color: $color-third;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+  .menuCard__icon {
+    font-size: 2.5rem;
+    color: $color-white;
+    padding: 25px 25px;
+  }
+
+  &:hover {
+    .menuCard__animated {
+        width: 75px;
+    }
+    .menuCard__icon {
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+      animation-name: rotate;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@for $i from 0 to 10 {
+  .menuCard:nth-child(#{$i}) {
+    animation-delay: #{$i/5}s;
+  }
+}
+

@@ -1,13 +1,15 @@
 @import "./utils/variables";
-@import "./utils/heritage";
+@import "./utils/heritages";
 @import "./utils/reset";
-@import "./utils/animations";
 
-@import "./components/card-big";
+@import "./components/card-accueil";
 @import "./components/card-step";
+@import "./components/card-menu";
 @import "./components/button";
+@import "./components/like";
 
 @import "./base/header";
 @import "./base/footer";
-@import "./pages/accueil"; 
+@import "./pages/accueil";
 @import "./pages/menu";
+
