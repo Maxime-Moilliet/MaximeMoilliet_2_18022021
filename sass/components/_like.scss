@@ -1,12 +1,58 @@
-.fa-heart::before {
-  content: "\f004";
-  color: #000;
-  background-color: transparent;
-  transition: color 0.4s ease-out;
-  cursor: pointer;
+.like__icon--bg,
+.like__icon--noBg {
+  font-size: 3rem;
 }
-.fa-heart:hover::before {
-  color: $color-primary;
+
+.like__icon {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
   background-color: transparent;
-  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 2px;
+  cursor: pointer;
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &::before {
+    opacity: 0;
+    transition: 0.5s;
+    content: "";
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    background: linear-gradient(0deg, $color-primary 0%, $color-secondary 100%);
+  }
+
+  &--bg,
+  &--noBg {
+    transition-duration: 0.25s;
+    background-color: $color-white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mix-blend-mode: lighten;
+  }
+
+  &:hover {
+    .like__icon--noBg {
+      opacity: 0;
+    }
+  }
+}
+
+.like__icon--menu {
+  .like__icon--bg,
+  .like__icon--noBg {
+    background-color: $color-grey-light;
+  }
 }

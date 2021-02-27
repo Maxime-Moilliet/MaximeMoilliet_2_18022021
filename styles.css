@@ -1,5 +1,4 @@
-@charset "UTF-8";
-.menu .menu__footer, .menus .menus__container, .operation .operation__container, .banner .location, .navbar {
+.menu .menu__footer, .menus .menus__container, .operation .operation__container, .banner .location, .navbar, .loader__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,6 +59,87 @@ a {
   color: inherit;
 }
 
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+  animation-name: loader;
+  animation-delay: 3s;
+  animation-fill-mode: both;
+}
+.loader__container {
+  width: 100%;
+  height: 100%;
+}
+.loader__item:nth-child(1) {
+  background-color: #9356DC;
+}
+.loader__item:nth-child(2) {
+  background-color: #FF79DA;
+}
+.loader__item:nth-child(3) {
+  background-color: rgba(255, 121, 218, 0.7);
+}
+.loader__item:nth-child(4) {
+  background-color: #99E2D0;
+}
+.loader__item:nth-child(5) {
+  background-color: rgba(153, 226, 208, 0.7);
+}
+.loader__item {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 1rem;
+  border-radius: 50%;
+}
+.loader__item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  animation: wave 2s ease-out infinite;
+}
+.loader__item:nth-child(1)::before {
+  animation-delay: 0.2s;
+}
+.loader__item:nth-child(2)::before {
+  animation-delay: 0.4s;
+}
+.loader__item:nth-child(3)::before {
+  animation-delay: 0.6s;
+}
+.loader__item:nth-child(4)::before {
+  animation-delay: 0.8s;
+}
+.loader__item:nth-child(5)::before {
+  animation-delay: 1s;
+}
+
+@keyframes wave {
+  50%, 75% {
+    transform: scale(2.5);
+  }
+  80%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes loader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1000;
+  }
+}
 .card {
   position: relative;
   max-width: 400px;
@@ -110,13 +190,11 @@ a {
   padding-left: 15px;
   padding-bottom: 20px;
 }
-.card .like__icon {
+.card .like__icon--accueil {
   position: absolute;
   top: 185px;
   right: 20px;
   padding: 5px;
-  font-size: 3rem;
-  cursor: pointer;
 }
 
 .operation__step {
@@ -305,18 +383,54 @@ a {
   box-shadow: 0px 12px 10px 0px #cecece;
 }
 
-.fa-heart::before {
-  content: "";
-  color: #000;
-  background-color: transparent;
-  transition: color 0.4s ease-out;
-  cursor: pointer;
+.like__icon--bg,
+.like__icon--noBg {
+  font-size: 3rem;
 }
 
-.fa-heart:hover::before {
-  color: #9356DC;
+.like__icon {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
   background-color: transparent;
-  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  padding: 2px;
+  cursor: pointer;
+}
+.like__icon:hover::before {
+  opacity: 1;
+}
+.like__icon::before {
+  opacity: 0;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  background: linear-gradient(0deg, #9356DC 0%, #FF79DA 100%);
+}
+.like__icon--bg, .like__icon--noBg {
+  transition-duration: 0.25s;
+  background-color: #ffffff;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: lighten;
+}
+.like__icon:hover .like__icon--noBg {
+  opacity: 0;
+}
+
+.like__icon--menu .like__icon--bg,
+.like__icon--menu .like__icon--noBg {
+  background-color: #f6f6f6;
 }
 
 .navbar {
@@ -503,10 +617,6 @@ a {
   font-size: 2.4rem;
   letter-spacing: 0.4px;
   font-family: "Shrikhand", cursive;
-}
-.menu .menu__header .menu__icon {
-  margin-right: 10px;
-  font-size: 2.7rem;
 }
 .menu .menu__body > * + * {
   margin-top: 35px;
