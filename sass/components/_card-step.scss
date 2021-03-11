@@ -8,9 +8,18 @@
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  cursor: pointer;
+  transition: .3s all;
 
   &:last-child {
     margin-bottom: 0px;
+  }
+
+  &:hover {
+    background-color: rgba($color: $color-primary, $alpha: .1);
+    i {
+      color: $color-primary;
+    }
   }
 
   span {
@@ -27,9 +36,7 @@
     color: #8d8d8d;
     margin-left: 20px;
     margin-right: 25px;
-  }
-  .i-active {
-    color: $color-primary;
+    transition: .3s color;
   }
   p {
     font-size: 1.6rem;
